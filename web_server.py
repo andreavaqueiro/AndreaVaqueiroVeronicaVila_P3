@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Servidor web para servir dashboard HTML y proxy APIs FIWARE."""
+"""Servidor web para servir dashboard HTML y exponer APIs leídas desde Orion.
+
+Nota: Este servidor NO genera datos. Orion-LD es la fuente única de verdad.
+"""
 
 from __future__ import annotations
 
@@ -11,8 +14,8 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# URL del Mock Orion
-ORION_BASE_URL = os.getenv("ORION_BASE_URL", "http://localhost:8000")
+# URL de Orion-LD (NGSI-LD)
+ORION_BASE_URL = os.getenv("ORION_BASE_URL", "http://localhost:1026").rstrip("/")
 
 @app.route("/")
 def index() -> tuple[str, int]:
@@ -37,8 +40,9 @@ def health() -> dict[str, str]:
 def fiware_health() -> dict[str, str]:
     """Verificar conexión con Orion."""
     try:
-        resp = requests.get(f"{ORION_BASE_URL}/health", timeout=2)
-        if resp.status_code == 200:
+        from orion_client import orion_health
+
+        if orion_health(timeout_s=2.0):
             return {"status": "ok", "orion": ORION_BASE_URL}
     except Exception:
         pass
@@ -48,13 +52,11 @@ def fiware_health() -> dict[str, str]:
 def get_streetlights_fiware() -> dict:
     """Obtener farolas FIWARE adaptadas para Leaflet."""
     try:
-        from fiware_adapter import FIWAREAdapter
-        
-        adapter = FIWAREAdapter()
-        return jsonify({
-            "data": adapter.streetlights_to_frontend(),
-            "stats": adapter.get_streetlight_statistics()
-        })
+        from orion_client import list_entities, streetlights_to_frontend, streetlight_stats
+
+        entities = list_entities("Streetlight")
+        data = streetlights_to_frontend(entities)
+        return jsonify({"data": data, "stats": streetlight_stats(data)})
     except Exception as e:
         return {"error": str(e)}, 400
 
@@ -62,10 +64,10 @@ def get_streetlights_fiware() -> dict:
 def get_crowd_flows_fiware() -> dict:
     """Obtener flujos peatonales FIWARE."""
     try:
-        from fiware_adapter import FIWAREAdapter
-        
-        adapter = FIWAREAdapter()
-        return jsonify(adapter.crowd_flows_to_frontend())
+        from orion_client import crowd_flows_to_frontend, list_entities
+
+        entities = list_entities("CrowdFlowObserved")
+        return jsonify(crowd_flows_to_frontend(entities))
     except Exception as e:
         return {"error": str(e)}, 400
 
@@ -73,10 +75,7 @@ def get_crowd_flows_fiware() -> dict:
 def get_traffic_flows_fiware() -> dict:
     """Obtener flujos de tráfico FIWARE."""
     try:
-        from fiware_adapter import FIWAREAdapter
-        
-        adapter = FIWAREAdapter()
-        return jsonify(adapter.traffic_flows_to_frontend())
+        return {"error": "Not implemented in FIWARE-only mode"}, 501
     except Exception as e:
         return {"error": str(e)}, 400
 
@@ -84,10 +83,7 @@ def get_traffic_flows_fiware() -> dict:
 def get_group_stats(group_id: str) -> dict:
     """Obtener estadísticas de un grupo específico."""
     try:
-        from fiware_adapter import FIWAREAdapter
-        
-        adapter = FIWAREAdapter()
-        return jsonify(adapter.get_group_statistics(group_id))
+        return {"error": "Not implemented in FIWARE-only mode"}, 501
     except Exception as e:
         return {"error": str(e)}, 400
 

@@ -319,7 +319,8 @@
         function initializeDashboard() {
             try {
                 console.log("🚀 Iniciando Eco-Dimming Dashboard");
-                const API_BASE = "http://localhost:8000";
+                // Misma origin que sirve el frontend (nginx) + proxy /api -> backend.
+                const API_BASE = "";
                 console.log("📡 API_BASE:", API_BASE);
         
         // Marcadores globales para el mapa
@@ -783,10 +784,9 @@
                 
                 console.log(`✅ Recibidas ${streetlights.length} farolas desde API`);
                 
-                // Si no hay farolas o error, usar MOCK
-                if (!Array.isArray(streetlights) || streetlights.length === 0) {
-                    console.warn("⚠️ API vacía, usando datos MOCK");
-                    streetlights = MOCK_STREETLIGHTS;
+                // En modo FIWARE, si Orion no tiene datos, mostramos 0 (no inventamos contexto).
+                if (!Array.isArray(streetlights)) {
+                    streetlights = [];
                 }
                 
                 // GUARDAR EN VARIABLE GLOBAL PARA HEATMAP

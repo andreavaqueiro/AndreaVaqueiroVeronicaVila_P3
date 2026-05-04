@@ -64,7 +64,9 @@
 
     <script>
         // Configuración
-        const API_BASE = "http://localhost:3000";
+        // Misma origin que sirve el dashboard (nginx) + proxy /api -> backend.
+        // Evita hardcodear puertos y mantiene Orion como fuente única de verdad.
+        const API_BASE = "";
         const CORUÑA_CENTER = [43.3750, -8.3970];
         const CORUÑA_POLYGON = [
             [43.3780, -8.4200], [43.3790, -8.4050], [43.3750, -8.3900], [43.3650, -8.3880],

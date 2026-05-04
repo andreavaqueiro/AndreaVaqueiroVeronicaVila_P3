@@ -19,7 +19,15 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-ORION_BASE_URL = os.getenv("ORION_BASE_URL", "http://localhost:1026").rstrip("/")
+from orion_client import (
+    ORION_BASE_URL,
+    crowd_flows_to_frontend,
+    list_entities,
+    orion_health,
+    streetlight_stats,
+    streetlights_to_frontend,
+)
+
 QUANTUMLEAP_BASE_URL = os.getenv(
     "QUANTUMLEAP_BASE_URL", "http://localhost:8668"
 ).rstrip("/")
@@ -47,6 +55,45 @@ HEADERS_LD = {
 async def health() -> dict[str, str]:
     """Health check del backend."""
     return {"status": "ok"}
+
+
+@app.get("/api/fiware/health")
+async def fiware_health() -> dict[str, str]:
+    """Health check de conectividad con Orion-LD."""
+    try:
+        ok = orion_health(timeout_s=2.0)
+        if not ok:
+            raise HTTPException(status_code=503, detail="Orion healthcheck failed")
+        return {"status": "ok", "orion": ORION_BASE_URL}
+    except requests.RequestException as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+
+
+@app.get("/api/streetlights/fiware")
+async def get_streetlights_fiware() -> dict[str, Any]:
+    """Devuelve farolas en formato consumible por el dashboard.
+
+    Fuente única de verdad: Orion-LD.
+    """
+    try:
+        entities = list_entities("Streetlight")
+        data = streetlights_to_frontend(entities)
+        return {"data": data, "stats": streetlight_stats(data)}
+    except requests.RequestException as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+
+
+@app.get("/api/crowd-flows/fiware")
+async def get_crowd_flows_fiware() -> list[dict[str, Any]]:
+    """Devuelve CrowdFlowObserved en formato consumible por el dashboard.
+
+    Fuente única de verdad: Orion-LD.
+    """
+    try:
+        entities = list_entities("CrowdFlowObserved")
+        return crowd_flows_to_frontend(entities)
+    except requests.RequestException as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
 
 
 @app.get("/api/streetlights")
