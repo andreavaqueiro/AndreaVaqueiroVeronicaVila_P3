@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:4.4
+    container_name: eco-dimming-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - eco-dimming-net
+
+  orion:
+    image: fiware/orion-ld:1.5.1
+    container_name: eco-dimming-orion
+    depends_on:
+      - mongo
+    environment:
+      ORIONLD_MONGO_HOST: mongo
+      ORIONLD_MONGO_USER: admin
+      ORIONLD_MONGO_PASSWORD: admin
+    ports:
+      - "1026:1026"
+    networks:
+      - eco-dimming-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1026/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: eco-dimming-mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    networks:
+      - eco-dimming-net
+
+  iot-agent:
+    image: fiware/iotagent-json:latest
+    container_name: eco-dimming-iot-agent
+    depends_on:
+      - mongo
+      - mosquitto
+    environment:
+      IOTA_CB_HOST: orion
+      IOTA_CB_PORT: 1026
+      IOTA_MQTT_HOST: mosquitto
+      IOTA_MQTT_PORT: 1883
+      IOTA_DEFAULT_RESOURCE: /iot
+      IOTA_LOG_LEVEL: DEBUG
+      IOTA_AUTOCAST: true
+    ports:
+      - "4041:4041"
+    networks:
+      - eco-dimming-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4041/iot/about"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo-data:
+
+networks:
+  eco-dimming-net:
+    driver: bridge

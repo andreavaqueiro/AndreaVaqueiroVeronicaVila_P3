@@ -1,0 +1,4504 @@
+{
+  "StreetlightModel": [
+    {
+      "id": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200",
+      "type": "StreetlightModel",
+      "description": {
+        "value": "Farola LED 200W - Modelo est\u00e1ndar",
+        "type": "Property"
+      },
+      "brand": {
+        "value": "Philips",
+        "type": "Property"
+      },
+      "modelName": {
+        "value": "StreetLite Mini",
+        "type": "Property"
+      },
+      "lampType": {
+        "value": "LED",
+        "type": "Property"
+      },
+      "luminousFlux": {
+        "value": 25000,
+        "type": "Property"
+      },
+      "colorTemperature": {
+        "value": 4000,
+        "type": "Property"
+      },
+      "lifeExpectancy": {
+        "value": 50000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111003Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150",
+      "type": "StreetlightModel",
+      "description": {
+        "value": "Farola LED 150W - Modelo compacto",
+        "type": "Property"
+      },
+      "brand": {
+        "value": "Osram",
+        "type": "Property"
+      },
+      "modelName": {
+        "value": "Echelon",
+        "type": "Property"
+      },
+      "lampType": {
+        "value": "LED",
+        "type": "Property"
+      },
+      "luminousFlux": {
+        "value": 18000,
+        "type": "Property"
+      },
+      "colorTemperature": {
+        "value": 4000,
+        "type": "Property"
+      },
+      "lifeExpectancy": {
+        "value": 50000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111043Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250",
+      "type": "StreetlightModel",
+      "description": {
+        "value": "Farola HPS 250W - Modelo antiguo",
+        "type": "Property"
+      },
+      "brand": {
+        "value": "Sylvania",
+        "type": "Property"
+      },
+      "modelName": {
+        "value": "Supersonic",
+        "type": "Property"
+      },
+      "lampType": {
+        "value": "HPS",
+        "type": "Property"
+      },
+      "luminousFlux": {
+        "value": 25000,
+        "type": "Property"
+      },
+      "colorTemperature": {
+        "value": 2700,
+        "type": "Property"
+      },
+      "lifeExpectancy": {
+        "value": 24000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111047Z",
+        "type": "Property"
+      }
+    }
+  ],
+  "StreetlightFeeder": [
+    {
+      "id": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro",
+      "type": "StreetlightFeeder",
+      "description": {
+        "value": "L\u00ednea de alimentaci\u00f3n - Centro Hist\u00f3rico",
+        "type": "Property"
+      },
+      "voltage": {
+        "value": 230.0,
+        "type": "Property"
+      },
+      "amperage": {
+        "value": 63.0,
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111287Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja",
+      "type": "StreetlightFeeder",
+      "description": {
+        "value": "L\u00ednea de alimentaci\u00f3n - Ciudad Vieja",
+        "type": "Property"
+      },
+      "voltage": {
+        "value": 230.0,
+        "type": "Property"
+      },
+      "amperage": {
+        "value": 63.0,
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111297Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real",
+      "type": "StreetlightFeeder",
+      "description": {
+        "value": "L\u00ednea de alimentaci\u00f3n - Calle Real y alrededores",
+        "type": "Property"
+      },
+      "voltage": {
+        "value": 230.0,
+        "type": "Property"
+      },
+      "amperage": {
+        "value": 63.0,
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111301Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo",
+      "type": "StreetlightFeeder",
+      "description": {
+        "value": "L\u00ednea de alimentaci\u00f3n - Paseo Mar\u00edtimo",
+        "type": "Property"
+      },
+      "voltage": {
+        "value": 230.0,
+        "type": "Property"
+      },
+      "amperage": {
+        "value": 63.0,
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111304Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche",
+      "type": "StreetlightFeeder",
+      "description": {
+        "value": "L\u00ednea de alimentaci\u00f3n - Ensanche",
+        "type": "Property"
+      },
+      "voltage": {
+        "value": 230.0,
+        "type": "Property"
+      },
+      "amperage": {
+        "value": 63.0,
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111306Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez",
+      "type": "StreetlightFeeder",
+      "description": {
+        "value": "L\u00ednea de alimentaci\u00f3n - Avenida Juan Fl\u00f3rez",
+        "type": "Property"
+      },
+      "voltage": {
+        "value": 230.0,
+        "type": "Property"
+      },
+      "amperage": {
+        "value": 63.0,
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111309Z",
+        "type": "Property"
+      }
+    }
+  ],
+  "StreetlightControlCabinet": [
+    {
+      "id": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro",
+      "type": "StreetlightControlCabinet",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.389,
+            43.379
+          ]
+        }
+      },
+      "description": {
+        "value": "Armario de control - Centro Hist\u00f3rico",
+        "type": "Property"
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111315Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja",
+      "type": "StreetlightControlCabinet",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.375,
+            43.385
+          ]
+        }
+      },
+      "description": {
+        "value": "Armario de control - Ciudad Vieja",
+        "type": "Property"
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111318Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real",
+      "type": "StreetlightControlCabinet",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.4,
+            43.375
+          ]
+        }
+      },
+      "description": {
+        "value": "Armario de control - Calle Real y alrededores",
+        "type": "Property"
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111321Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo",
+      "type": "StreetlightControlCabinet",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.36,
+            43.37
+          ]
+        }
+      },
+      "description": {
+        "value": "Armario de control - Paseo Mar\u00edtimo",
+        "type": "Property"
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111323Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche",
+      "type": "StreetlightControlCabinet",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.41,
+            43.36
+          ]
+        }
+      },
+      "description": {
+        "value": "Armario de control - Ensanche",
+        "type": "Property"
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111326Z",
+        "type": "Property"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez",
+      "type": "StreetlightControlCabinet",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.42,
+            43.38
+          ]
+        }
+      },
+      "description": {
+        "value": "Armario de control - Avenida Juan Fl\u00f3rez",
+        "type": "Property"
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111328Z",
+        "type": "Property"
+      }
+    }
+  ],
+  "StreetlightGroup": [
+    {
+      "id": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro",
+      "type": "StreetlightGroup",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.389,
+            43.379
+          ]
+        }
+      },
+      "description": {
+        "value": "Grupo de farolas del Centro Hist\u00f3rico",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111372Z",
+        "type": "Property"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja",
+      "type": "StreetlightGroup",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.375,
+            43.385
+          ]
+        }
+      },
+      "description": {
+        "value": "Grupo de farolas de Ciudad Vieja",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111378Z",
+        "type": "Property"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real",
+      "type": "StreetlightGroup",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.4,
+            43.375
+          ]
+        }
+      },
+      "description": {
+        "value": "Grupo de farolas de Calle Real",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111382Z",
+        "type": "Property"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo",
+      "type": "StreetlightGroup",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.36,
+            43.37
+          ]
+        }
+      },
+      "description": {
+        "value": "Grupo de farolas del Paseo Mar\u00edtimo",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111387Z",
+        "type": "Property"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche",
+      "type": "StreetlightGroup",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.41,
+            43.36
+          ]
+        }
+      },
+      "description": {
+        "value": "Grupo de farolas del Ensanche",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111390Z",
+        "type": "Property"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez",
+      "type": "StreetlightGroup",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.42,
+            43.38
+          ]
+        }
+      },
+      "description": {
+        "value": "Grupo de farolas de Avenida Juan Fl\u00f3rez",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111394Z",
+        "type": "Property"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    }
+  ],
+  "Streetlight": [
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-001",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.388163748038796,
+            43.3798362519612
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 95,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9500,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111541Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-002",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.388243150924858,
+            43.37975684907514
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 74,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7400,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111552Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-003",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.388314370570527,
+            43.379685629429474
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 83,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8300,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111558Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-004",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.386833274211085,
+            43.381166725788916
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 4,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 18.301970873915465,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111565Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-005",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.388076153070054,
+            43.37992384692994
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111571Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-006",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.386496548295883,
+            43.38150345170411
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 66,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6600,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111579Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-007",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.38750653146038,
+            43.38049346853962
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 77,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7700,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111585Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-008",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.386060186472257,
+            43.381939813527744
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 71,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111592Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-009",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.38846616754702,
+            43.37953383245298
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 69,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6900,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111598Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-010",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.383354510692808,
+            43.38464548930719
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111602Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-011",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.388416940619043,
+            43.379583059380955
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 7,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 41.907849280983356,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111607Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-012",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.386757618832611,
+            43.38124238116739
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 83,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8300,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111611Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:centro"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-013",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.371782619277013,
+            43.388217380722985
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 15,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 24.497484704857314,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111618Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-014",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.374893438230426,
+            43.38510656176957
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 72,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7200,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111622Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-015",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.37415472129812,
+            43.38584527870188
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 78,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7800,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111626Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-016",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.373968745930254,
+            43.38603125406974
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 93,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9300,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111630Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-017",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.370244937064948,
+            43.38975506293505
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 23,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 25.924865839750495,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111636Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-018",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.373062835874226,
+            43.38693716412577
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 79,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7900,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111641Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-019",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.371200114567845,
+            43.38879988543216
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 79,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7900,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111644Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-020",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.372576846240381,
+            43.38742315375961
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111648Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-021",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.372546160474366,
+            43.387453839525634
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111651Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-022",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.374284955992898,
+            43.3857150440071
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 61,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111655Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-023",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.372811865303115,
+            43.387188134696885
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111658Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-024",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.374766819741087,
+            43.385233180258915
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 26,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 18.014579964476283,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111662Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ciudad-vieja"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ciudad_vieja"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ciudad_vieja"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-025",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.395878006138249,
+            43.37912199386175
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 84,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8400,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111669Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-026",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.399763060245661,
+            43.37523693975434
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 15,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 22.560314861300785,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111676Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-027",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.395940373680071,
+            43.37905962631993
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111681Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-028",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.398453743537177,
+            43.376546256462824
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 91,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111687Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-029",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.399969357046032,
+            43.375030642953966
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 71,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111694Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-030",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.397750735584795,
+            43.377249264415205
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 4,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 27.791960019339218,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111700Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-031",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.39699827977301,
+            43.37800172022699
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 12,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 38.05177948468869,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111704Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-032",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.396005685773146,
+            43.37899431422686
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 11,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 10.1874909192064,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111708Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-033",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.399563337447017,
+            43.375436662552985
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 60,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111711Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-034",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.397296578717727,
+            43.37770342128227
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 82,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8200,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111715Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-035",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.395972525556358,
+            43.379027474443646
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 85,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8500,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111719Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:HPS-250"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-calle-real"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:calle_real"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:calle_real"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-036",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.358792744984429,
+            43.37120725501557
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 14,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 15.31052448960784,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111724Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-037",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.352552404708986,
+            43.37744759529101
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 68,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6800,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111727Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-038",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.354067343099983,
+            43.37593265690001
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 71,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111731Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-039",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.355995834288871,
+            43.37400416571113
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 98,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9800,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111734Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-040",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.352139537026071,
+            43.37786046297393
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 81,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111738Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-041",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.352171421541653,
+            43.37782857845834
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 73,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7300,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111741Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-042",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.35919989924882,
+            43.370800100751175
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111745Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-043",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.359324702428411,
+            43.37067529757159
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111748Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-044",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.3599178340704,
+            43.370082165929595
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 85,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8500,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111754Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-045",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.35777573789257,
+            43.37222426210743
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 17,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 11.098617368488846,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111757Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-200"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-paseo-maritimo"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:paseo_maritimo"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:paseo_maritimo"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-046",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.40740076135296,
+            43.36259923864704
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 96,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9600,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111762Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-047",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.401352658747937,
+            43.368647341252064
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 25,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 26.04878348210985,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111766Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-048",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.401746815241347,
+            43.36825318475865
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 81,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111771Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-049",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.405128047790821,
+            43.36487195220918
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 100,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 10000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111775Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-050",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.409499799870936,
+            43.36050020012906
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 90,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111778Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-051",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.40598514868716,
+            43.36401485131284
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 73,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7300,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111782Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-052",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.407881030013405,
+            43.3621189699866
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 11,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 45.51123659076761,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111785Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-053",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.406733659691204,
+            43.3632663403088
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111789Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-054",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.405831558024405,
+            43.36416844197559
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 62,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6200,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111794Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-055",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.409954639745628,
+            43.36004536025437
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 90,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9000,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111798Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-056",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.401776122379868,
+            43.36822387762013
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 94,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9400,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111802Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-057",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.398770952968501,
+            43.3712290470315
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 85,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8500,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111805Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:ensanche"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:ensanche"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-058",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.414658563538072,
+            43.38534143646193
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111809Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-059",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.419966195841521,
+            43.38003380415848
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 12,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 37.62390169615013,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111817Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-060",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.417065507949419,
+            43.38293449205058
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 88,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8800,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111823Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-061",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.418604250979692,
+            43.38139574902031
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 62,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 6200,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111829Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-062",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.418853289818978,
+            43.38114671018103
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111835Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-063",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.415623500977846,
+            43.38437649902216
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 78,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7800,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111841Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-064",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.419052678183611,
+            43.38094732181639
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 81,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 8100,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111847Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-065",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.419509779082196,
+            43.38049022091781
+          ]
+        }
+      },
+      "status": {
+        "value": "fault",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "failure",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 10,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 15.572119631110626,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111853Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-066",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.414843031798032,
+            43.38515696820197
+          ]
+        }
+      },
+      "status": {
+        "value": "off",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 0,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 0.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 0,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111859Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-067",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.417827546305267,
+            43.382172453694736
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 93,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 9300,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111865Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:Streetlight:coru\u00f1a:SL-068",
+      "type": "Streetlight",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.419788263587938,
+            43.380211736412065
+          ]
+        }
+      },
+      "status": {
+        "value": "on",
+        "type": "Property"
+      },
+      "powerState": {
+        "value": "normal",
+        "type": "Property"
+      },
+      "luminousIntensity": {
+        "value": 72,
+        "type": "Property"
+      },
+      "powerConsumption": {
+        "value": 100.0,
+        "type": "Property"
+      },
+      "illuminanceLevel": {
+        "value": 7200,
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111873Z",
+        "type": "Property"
+      },
+      "refStreetlightModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightModel:coru\u00f1a:LED-150"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-juan-florez"
+      },
+      "refControlCabinet": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightControlCabinet:coru\u00f1a:juan_florez"
+      },
+      "refFeeder": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightFeeder:coru\u00f1a:juan_florez"
+      }
+    }
+  ],
+  "CrowdFlowObserved": [
+    {
+      "id": "urn:ngsi-ld:CrowdFlowObserved:coru\u00f1a:centro",
+      "type": "CrowdFlowObserved",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.389,
+            43.379
+          ]
+        }
+      },
+      "peopleCount": {
+        "value": 17,
+        "type": "Property"
+      },
+      "occupancy": {
+        "value": 0.17,
+        "type": "Property"
+      },
+      "maxOccupancy": {
+        "value": 100,
+        "type": "Property"
+      },
+      "description": {
+        "value": "Flujo peatonal - Centro Hist\u00f3rico",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111957Z",
+        "type": "Property"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:CrowdFlowObserved:coru\u00f1a:ensanche",
+      "type": "CrowdFlowObserved",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.41,
+            43.36
+          ]
+        }
+      },
+      "peopleCount": {
+        "value": 20,
+        "type": "Property"
+      },
+      "occupancy": {
+        "value": 0.2,
+        "type": "Property"
+      },
+      "maxOccupancy": {
+        "value": 100,
+        "type": "Property"
+      },
+      "description": {
+        "value": "Flujo peatonal - Ensanche",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.111967Z",
+        "type": "Property"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      }
+    }
+  ],
+  "TrafficFlowObserved": [
+    {
+      "id": "urn:ngsi-ld:TrafficFlowObserved:coru\u00f1a:centro",
+      "type": "TrafficFlowObserved",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.389,
+            43.379
+          ]
+        }
+      },
+      "vehicleCount": {
+        "value": 9,
+        "type": "Property"
+      },
+      "vehicleType": {
+        "value": "mixed",
+        "type": "Property"
+      },
+      "description": {
+        "value": "Flujo de tr\u00e1fico - Centro Hist\u00f3rico",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.112019Z",
+        "type": "Property"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      }
+    }
+  ],
+  "ItemFlowObserved": [
+    {
+      "id": "urn:ngsi-ld:ItemFlowObserved:coru\u00f1a:centro",
+      "type": "ItemFlowObserved",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.389,
+            43.379
+          ]
+        }
+      },
+      "itemCount": {
+        "value": 16,
+        "type": "Property"
+      },
+      "itemType": {
+        "value": "generic",
+        "type": "Property"
+      },
+      "description": {
+        "value": "Flujo gen\u00e9rico - Centro Hist\u00f3rico",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.112074Z",
+        "type": "Property"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-centro"
+      }
+    },
+    {
+      "id": "urn:ngsi-ld:ItemFlowObserved:coru\u00f1a:ensanche",
+      "type": "ItemFlowObserved",
+      "location": {
+        "type": "GeoProperty",
+        "value": {
+          "type": "Point",
+          "coordinates": [
+            -8.41,
+            43.36
+          ]
+        }
+      },
+      "itemCount": {
+        "value": 10,
+        "type": "Property"
+      },
+      "itemType": {
+        "value": "generic",
+        "type": "Property"
+      },
+      "description": {
+        "value": "Flujo gen\u00e9rico - Ensanche",
+        "type": "Property"
+      },
+      "dateObserved": {
+        "value": "2026-05-04T15:27:46.112084Z",
+        "type": "Property"
+      },
+      "refStreetlightGroup": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:StreetlightGroup:coru\u00f1a:grupo-ensanche"
+      }
+    }
+  ]
+}

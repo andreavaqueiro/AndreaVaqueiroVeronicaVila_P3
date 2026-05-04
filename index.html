@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Dimming MVP - Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- Leaflet Heatmap Layer -->
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .card h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        #map {
+            height: 600px;
+            border-radius: 6px;
+            grid-column: 1 / 3;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .map-legend {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .map-legend h3 {
+            margin-bottom: 12px;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .legend-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #333;
+            font-size: 16px;
+        }
+        
+        .icon-on {
+            background: #FFDD00;
+        }
+        
+        .icon-off {
+            background: #888888;
+        }
+        
+        .icon-fault {
+            background: #FF0000;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .metric-label {
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .status-ok {
+            color: #27ae60;
+        }
+        
+        .status-warning {
+            color: #f39c12;
+        }
+        
+        .status-error {
+            color: #e74c3c;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+        }
+        
+        .error {
+            background: #ffe0e0;
+            color: #c00;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .full-width {
+            grid-column: 1 / 3;
+        }
+        
+        footer {
+            background: #333;
+            color: #ccc;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+        
+        /* Estilos para marcadores de farolas */
+        .streetlight-marker {
+            z-index: 1000 !important;
+        }
+        
+        .leaflet-marker-icon {
+            z-index: 1000 !important;
+        }
+        
+        .leaflet-popup {
+            z-index: 1001 !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌍 Eco-Dimming MVP</h1>
+        <p>Dashboard de Iluminación Urbana Inteligente - A Coruña</p>
+    </header>
+    
+    <div class="container">
+        <!-- Mapa -->
+        <div id="map" class="full-width"></div>
+        
+        <!-- Leyenda del Mapa -->
+        <div class="map-legend full-width">
+            <h3>🗺️ Leyenda de Estados de Farolas</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                <div class="legend-item">
+                    <div class="legend-icon icon-on" style="background: #FFDD00;">💡</div>
+                    <span><strong>Encendida</strong> - Funcionando normalmente</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon icon-off">⚫</div>
+                    <span><strong>Apagada</strong> - Sin alimentación</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon icon-fault" style="background: #FF0000;">⚠️</div>
+                    <span><strong>Averiada</strong> - Fallo de hardware</span>
+                </div>
+            </div>
+            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; font-size: 0.9em; color: #666;">
+                <strong>Intensidad:</strong> Varía por densidad de peatones | <strong>Haz clic</strong> en un marcador para más detalles
+            </div>
+        </div>
+        
+        <!-- Estado General -->
+        <div class="card">
+            <h2>📊 Estado General</h2>
+            <div class="metric">
+                <span class="metric-label">Farolas Activas</span>
+                <span class="metric-value" id="streetlight-count">-</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Peatones Detectados</span>
+                <span class="metric-value" id="people-count">-</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Consumo (kWh)</span>
+                <span class="metric-value" id="energy-consumed">-</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Anomalías</span>
+                <span class="metric-value" id="anomaly-count">-</span>
+            </div>
+        </div>
+        
+        <!-- Recomendación -->
+        <div class="card">
+            <h2>💡 Recomendación de Intensidad</h2>
+            <div id="recommendation" class="loading">Cargando...</div>
+            <button class="btn" onclick="applyRecommendation()">Aplicar Recomendación</button>
+        </div>
+        
+        <!-- Histórico de Energía -->
+        <div class="card">
+            <h2>⚡ Consumo Energético (últimas 6h)</h2>
+            <div class="chart-container">
+                <canvas id="energyChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Histórico de Peatones -->
+        <div class="card">
+            <h2>👥 Flujo Peatonal (últimas 6h)</h2>
+            <div class="chart-container">
+                <canvas id="crowdChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Anomalías Detectadas -->
+        <div class="card full-width">
+            <h2>⚠️ Anomalías Detectadas</h2>
+            <div class="btn-group">
+                <button class="btn" onclick="refreshAnomalies()">Actualizar</button>
+            </div>
+            <div id="anomalies" class="loading">Cargando...</div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Eco-Dimming MVP | FIWARE NGSI-LD | Universidad | Abril 2026</p>
+    </footer>
+    
+    <script>
+        // Envolver todo en DOMContentLoaded para asegurar que el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeDashboard);
+        } else {
+            // El DOM ya está cargado
+            initializeDashboard();
+        }
+        
+        function initializeDashboard() {
+            try {
+                console.log("🚀 Iniciando Eco-Dimming Dashboard");
+                const API_BASE = "http://localhost:8000";
+                console.log("📡 API_BASE:", API_BASE);
+        
+        // Marcadores globales para el mapa
+        let streetlightMarkers = {};
+        let streetsLayer = null;
+        
+        // DATOS MOCK PARA FALLBACK (si la API falla) - 70 farolas con coordenadas FIJAS en tierra firme
+        const MOCK_STREETLIGHTS = [
+            { id: "ACOR-SL-001", status: "fault", intensity: 0, lat: 43.3606, lng: -8.4236, power: 0 },
+            { id: "ACOR-SL-002", status: "on", intensity: 93, lat: 43.3642, lng: -8.4152, power: 111.6 },
+            { id: "ACOR-SL-003", status: "on", intensity: 44, lat: 43.3582, lng: -8.4094, power: 52.8 },
+            { id: "ACOR-SL-004", status: "on", intensity: 29, lat: 43.3683, lng: -8.3929, power: 34.8 },
+            { id: "ACOR-SL-005", status: "on", intensity: 54, lat: 43.3641, lng: -8.4061, power: 64.8 },
+            { id: "ACOR-SL-006", status: "on", intensity: 64, lat: 43.3658, lng: -8.4001, power: 76.8 },
+            { id: "ACOR-SL-007", status: "on", intensity: 65, lat: 43.3635, lng: -8.4159, power: 78 },
+            { id: "ACOR-SL-008", status: "on", intensity: 87, lat: 43.3689, lng: -8.4175, power: 104.4 },
+            { id: "ACOR-SL-009", status: "on", intensity: 22, lat: 43.3609, lng: -8.4101, power: 26.4 },
+            { id: "ACOR-SL-010", status: "on", intensity: 41, lat: 43.3707, lng: -8.3941, power: 49.2 },
+            { id: "ACOR-SL-011", status: "fault", intensity: 0, lat: 43.3685, lng: -8.4001, power: 0 },
+            { id: "ACOR-SL-012", status: "on", intensity: 18, lat: 43.3658, lng: -8.4053, power: 21.6 },
+            { id: "ACOR-SL-013", status: "on", intensity: 1, lat: 43.3724, lng: -8.4103, power: 1.2 },
+            { id: "ACOR-SL-014", status: "on", intensity: 67, lat: 43.3729, lng: -8.4093, power: 80.4 },
+            { id: "ACOR-SL-015", status: "off", intensity: 0, lat: 43.367, lng: -8.392, power: 0 },
+            { id: "ACOR-SL-016", status: "on", intensity: 88, lat: 43.3613, lng: -8.4096, power: 105.6 },
+            { id: "ACOR-SL-017", status: "off", intensity: 0, lat: 43.3636, lng: -8.4105, power: 0 },
+            { id: "ACOR-SL-018", status: "on", intensity: 35, lat: 43.3695, lng: -8.4194, power: 42 },
+            { id: "ACOR-SL-019", status: "on", intensity: 11, lat: 43.3693, lng: -8.4201, power: 13.2 },
+            { id: "ACOR-SL-020", status: "on", intensity: 56, lat: 43.3625, lng: -8.425, power: 67.2 },
+            { id: "ACOR-SL-021", status: "fault", intensity: 0, lat: 43.3664, lng: -8.4077, power: 0 },
+            { id: "ACOR-SL-022", status: "on", intensity: 30, lat: 43.3714, lng: -8.4014, power: 36 },
+            { id: "ACOR-SL-023", status: "fault", intensity: 0, lat: 43.3705, lng: -8.4101, power: 0 },
+            { id: "ACOR-SL-024", status: "fault", intensity: 0, lat: 43.3741, lng: -8.4106, power: 0 },
+            { id: "ACOR-SL-025", status: "on", intensity: 21, lat: 43.37, lng: -8.4056, power: 25.2 },
+            { id: "ACOR-SL-026", status: "on", intensity: 14, lat: 43.3614, lng: -8.402, power: 16.8 },
+            { id: "ACOR-SL-027", status: "off", intensity: 0, lat: 43.3618, lng: -8.4216, power: 0 },
+            { id: "ACOR-SL-028", status: "on", intensity: 12, lat: 43.3683, lng: -8.4086, power: 14.4 },
+            { id: "ACOR-SL-029", status: "off", intensity: 0, lat: 43.3708, lng: -8.4182, power: 0 },
+            { id: "ACOR-SL-030", status: "on", intensity: 26, lat: 43.3712, lng: -8.4082, power: 31.2 },
+            { id: "ACOR-SL-031", status: "on", intensity: 4, lat: 43.3647, lng: -8.4014, power: 4.8 },
+            { id: "ACOR-SL-032", status: "on", intensity: 36, lat: 43.3651, lng: -8.4157, power: 43.2 },
+            { id: "ACOR-SL-033", status: "on", intensity: 75, lat: 43.3715, lng: -8.4006, power: 90 },
+            { id: "ACOR-SL-034", status: "fault", intensity: 0, lat: 43.3683, lng: -8.4201, power: 0 },
+            { id: "ACOR-SL-035", status: "fault", intensity: 0, lat: 43.3623, lng: -8.417, power: 0 },
+            { id: "ACOR-SL-036", status: "fault", intensity: 0, lat: 43.3587, lng: -8.4155, power: 0 },
+            { id: "ACOR-SL-037", status: "on", intensity: 10, lat: 43.358, lng: -8.4194, power: 12 },
+            { id: "ACOR-SL-038", status: "on", intensity: 30, lat: 43.3707, lng: -8.4067, power: 36 },
+            { id: "ACOR-SL-039", status: "on", intensity: 21, lat: 43.3622, lng: -8.4112, power: 25.2 },
+            { id: "ACOR-SL-040", status: "on", intensity: 93, lat: 43.3713, lng: -8.4083, power: 111.6 },
+            { id: "ACOR-SL-041", status: "off", intensity: 0, lat: 43.3579, lng: -8.4166, power: 0 },
+            { id: "ACOR-SL-042", status: "on", intensity: 55, lat: 43.3647, lng: -8.4186, power: 66 },
+            { id: "ACOR-SL-043", status: "off", intensity: 0, lat: 43.3682, lng: -8.4112, power: 0 },
+            { id: "ACOR-SL-044", status: "on", intensity: 9, lat: 43.3641, lng: -8.3988, power: 10.8 },
+            { id: "ACOR-SL-045", status: "on", intensity: 16, lat: 43.3685, lng: -8.4232, power: 19.2 },
+            { id: "ACOR-SL-046", status: "on", intensity: 46, lat: 43.3659, lng: -8.4234, power: 55.2 },
+            { id: "ACOR-SL-047", status: "on", intensity: 35, lat: 43.3626, lng: -8.4024, power: 42 },
+            { id: "ACOR-SL-048", status: "on", intensity: 35, lat: 43.363, lng: -8.4, power: 42 },
+            { id: "ACOR-SL-049", status: "on", intensity: 72, lat: 43.3708, lng: -8.4079, power: 86.4 },
+            { id: "ACOR-SL-050", status: "on", intensity: 15, lat: 43.358, lng: -8.3993, power: 18 },
+            { id: "ACOR-SL-051", status: "on", intensity: 91, lat: 43.3681, lng: -8.4022, power: 109.2 },
+            { id: "ACOR-SL-052", status: "on", intensity: 42, lat: 43.3715, lng: -8.4125, power: 50.4 },
+            { id: "ACOR-SL-053", status: "on", intensity: 55, lat: 43.3649, lng: -8.4, power: 66 },
+            { id: "ACOR-SL-054", status: "on", intensity: 81, lat: 43.3752, lng: -8.4062, power: 97.2 },
+            { id: "ACOR-SL-055", status: "on", intensity: 34, lat: 43.3689, lng: -8.4111, power: 40.8 },
+            { id: "ACOR-SL-056", status: "on", intensity: 29, lat: 43.3622, lng: -8.426, power: 34.8 },
+            { id: "ACOR-SL-057", status: "on", intensity: 30, lat: 43.3719, lng: -8.4157, power: 36 },
+            { id: "ACOR-SL-058", status: "on", intensity: 13, lat: 43.3665, lng: -8.4169, power: 15.6 },
+            { id: "ACOR-SL-059", status: "fault", intensity: 0, lat: 43.3584, lng: -8.418, power: 0 },
+            { id: "ACOR-SL-060", status: "on", intensity: 8, lat: 43.3594, lng: -8.4049, power: 9.6 },
+            { id: "ACOR-SL-061", status: "on", intensity: 93, lat: 43.3673, lng: -8.4138, power: 111.6 },
+            { id: "ACOR-SL-062", status: "on", intensity: 86, lat: 43.3713, lng: -8.4165, power: 103.2 },
+            { id: "ACOR-SL-063", status: "on", intensity: 27, lat: 43.3667, lng: -8.4206, power: 32.4 },
+            { id: "ACOR-SL-064", status: "on", intensity: 18, lat: 43.37, lng: -8.4176, power: 21.6 },
+            { id: "ACOR-SL-065", status: "on", intensity: 66, lat: 43.3585, lng: -8.3995, power: 79.2 },
+            { id: "ACOR-SL-066", status: "off", intensity: 0, lat: 43.3595, lng: -8.4033, power: 0 },
+            { id: "ACOR-SL-067", status: "on", intensity: 66, lat: 43.3704, lng: -8.3973, power: 79.2 },
+            { id: "ACOR-SL-068", status: "on", intensity: 8, lat: 43.3624, lng: -8.4217, power: 9.6 },
+            { id: "ACOR-SL-069", status: "on", intensity: 36, lat: 43.3639, lng: -8.3999, power: 43.2 },
+            { id: "ACOR-SL-070", status: "fault", intensity: 0, lat: 43.3691, lng: -8.4074, power: 0 }
+        ];
+        
+        // Función para calcular potencia desde intensidad
+        function calculatePowerFromIntensity(status, intensity) {
+            if (status !== "on") return 0;  // Apagada o averiada
+            // Lineal: 120W a 100%, 0W a 0%
+            return (intensity / 100) * 120;
+        }
+        
+        // Polígono de la zona urbana terrestre de A Coruña (excluye mar)
+        // Cubre: María Pita, Centro, Calle Real, Plaza de Pontevedra, Riazor, Ensanche, Avenida Juan Flórez
+        const A_CORUNA_URBAN_POLYGON = [
+            [43.3780, -8.4200],  // Noroeste (Riazor)
+            [43.3790, -8.4050],  // Norte (Centro histórico)
+            [43.3750, -8.3900],  // Noreste (Obelisco)
+            [43.3650, -8.3880],  // Este (Plaza de Pontevedra)
+            [43.3550, -8.3920],  // Sureste
+            [43.3520, -8.4100],  // Sur (Cuatro Caminos)
+            [43.3560, -8.4250],  // Suroeste (Ensanche)
+            [43.3700, -8.4280],  // Oeste (Juan Flórez)
+        ];
+        
+        // Algoritmo Ray Casting para verificar si un punto está dentro del polígono
+        function isPointInPolygon(lat, lon, polygon) {
+            let inside = false;
+            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+                const [lat1, lon1] = polygon[i];
+                const [lat2, lon2] = polygon[j];
+                
+                const intersect = ((lon1 > lon) !== (lon2 > lon)) &&
+                    (lat < (lat2 - lat1) * (lon - lon1) / (lon2 - lon1) + lat1);
+                if (intersect) inside = !inside;
+            }
+            return inside;
+        }
+        
+        // Función para verificar si las coordenadas están dentro de A Coruña (tierra firme)
+        function isInsideCityBounds(lat, lng) {
+            // Validación 1: Usar algoritmo Ray Casting con el polígono urbano
+            if (!isPointInPolygon(lat, lng, A_CORUNA_URBAN_POLYGON)) {
+                return false;
+            }
+            
+            // Validación 2: Excluir zonas de mar conocidas (norte y este)
+            // Zona marina al norte y este (costa)
+            if (lat > 43.372 && lng > -8.405) {
+                return false;
+            }
+            
+            // Validación 3: Validar rango general de A Coruña
+            if (lat < 43.355 || lat > 43.382) {
+                return false;
+            }
+            if (lng < -8.427 || lng > -8.381) {
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Función para calcular consumo acumulado en kWh (últimas 6 horas)
+        function calculateTotalEnergyConsumption(streetlights) {
+            let totalPowerW = 0;
+            
+            streetlights.forEach(sl => {
+                let intensity = sl.intensity !== undefined ? sl.intensity : (sl.illuminanceLevel?.value || 0);
+                let status = sl.status !== undefined ? sl.status : (sl.status?.value || "unknown");
+                
+                // Solo calcular potencia para farolas encendidas
+                if (status === 'on') {
+                    // Fórmula: potenciaW = 120 * (intensidad / 100)
+                    let powerW = 120 * (intensity / 100);
+                    totalPowerW += powerW;
+                }
+            });
+            
+            // Convertir a kWh para 6 horas: kWh = sumaPotenciaW * 6 / 1000
+            let totalKWh = (totalPowerW * 6) / 1000;
+            
+            console.log(`💡 Potencia total: ${totalPowerW.toFixed(1)}W → Consumo 6h: ${totalKWh.toFixed(2)}kWh`);
+            
+            return totalKWh;
+        }
+        
+        // Crear iconos personalizados para farolas con estados claros
+        function createStreetlightIcon(status, intensity) {
+            let color, symbol;
+            
+            if (status === "on") {
+                // ENCENDIDA: Amarillo/Dorado
+                color = "#FFD700";  // Oro/amarillo
+                symbol = "💡";
+            } else if (status === "off") {
+                // APAGADA: Gris/Negro
+                color = "#4a4a4a";  // Gris oscuro
+                symbol = "⚫";
+            } else if (status === "fault") {
+                // AVERIADA: Rojo
+                color = "#FF4444";  // Rojo
+                symbol = "⚠️";
+            } else {
+                // DESCONOCIDA: Gris neutro
+                color = "#888888";
+                symbol = "?";  // Símbolo simple sin emoji
+            }
+            
+            const iconHtml = `<div style="
+                width: 36px;
+                height: 36px;
+                background: ${color};
+                border: 2px solid #000;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.3);
+                z-index: 1000;
+            ">${symbol}</div>`;
+            
+            return L.divIcon({
+                html: iconHtml,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18],
+                popupAnchor: [0, -20],
+                className: 'streetlight-marker'
+            });
+        }
+        
+        // Inicializar mapa en zona urbana TERRESTRE (Centro de A Coruña)
+        let map = null;
+        try {
+            map = L.map('map').setView([43.3750, -8.3970], 15);
+            console.log("🗺️ Mapa inicializado en zona urbana terrestre");
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Layer para markers de farolas
+            streetsLayer = L.featureGroup().addTo(map);
+            console.log("✅ Mapa y layers configurados");
+        } catch (error) {
+            console.error("❌ Error inicializando mapa:", error);
+            map = null;
+        }
+        
+        // Agregar control para heatmap
+        L.Control.Heatmap = L.Control.extend({
+            onAdd: function(map) {
+                let div = L.DomUtil.create('div', 'leaflet-control-heatmap');
+                div.innerHTML = `
+                    <button id="heatmap-toggle" style="
+                        background: white;
+                        border: 2px solid #ccc;
+                        border-radius: 4px;
+                        padding: 8px 12px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        color: #333;
+                        font-size: 12px;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'">
+                        🔥 Heatmap: OFF
+                    </button>
+                `;
+                L.DomEvent.disableClickPropagation(div);
+                return div;
+            }
+        });
+        
+        new L.Control.Heatmap({ position: 'topright' }).addTo(map);
+        
+        // Listener para botón de heatmap (con delay para asegurar que existe)
+        setTimeout(function() {
+            const heatmapBtn = document.getElementById('heatmap-toggle');
+            if (heatmapBtn) {
+                heatmapBtn.addEventListener('click', function() {
+                    toggleHeatmap();
+                    updateHeatmapButtonUI();
+                });
+            } else {
+                console.warn("⚠️ Botón de heatmap no encontrado");
+            }
+        }, 100);
+        
+        let energyChart = null;
+        let crowdChart = null;
+        
+        // Variables GLOBALES para heatmap
+        window.heatmapLayer = null;
+        window.heatmapEnabled = false;
+        window.streetlights = [];
+        window.crowdFlows = [];
+        
+        // Actualizar UI del botón del heatmap
+        function updateHeatmapButtonUI() {
+            const btn = document.getElementById('heatmap-toggle');
+            if (btn) {
+                if (window.heatmapEnabled) {
+                    btn.textContent = '🔥 Heatmap: ON';
+                    btn.style.background = '#ffcccc';
+                    btn.style.color = '#cc0000';
+                } else {
+                    btn.textContent = '🔥 Heatmap: OFF';
+                    btn.style.background = 'white';
+                    btn.style.color = '#333';
+                }
+            }
+        }
+        
+        // Cargar datos iniciales
+        async function loadDashboard() {
+            try {
+                await Promise.all([
+                    loadStreetlights(),
+                    loadCrowdFlows(),
+                    loadCabinet(),
+                    loadRecommendation(),
+                    loadAnomalies(),
+                    loadHistoricalEnergy(),
+                    loadHistoricalCrowd()
+                ]);
+                
+                // Actualizar heatmap si está habilitado
+                if (window.heatmapEnabled && window.streetlights && window.streetlights.length > 0) {
+                    console.log("🔄 Actualizando heatmap...");
+                    updateHeatmap(window.streetlights, window.crowdFlows);
+                }
+            } catch (error) {
+                console.error("❌ Error cargando dashboard:", error);
+            }
+        }
+        
+        // ═══════════════════════════════════════════════════════════════
+        // FUNCIONES PARA HEATMAP DE ACTIVIDAD URBANA
+        // ═══════════════════════════════════════════════════════════════
+        
+        // Generar datos de calor basados ÚNICAMENTE en peatones (CrowdFlowObserved)
+        function generateHeatmapData(streetlights, crowdFlows) {
+            let heatData = [];
+            
+            console.log(`📊 Generando heatmap con ${crowdFlows?.length || 0} flujos peatonales`);
+            
+            // SOLO usar datos de flujo peatonal
+            if (crowdFlows && crowdFlows.length > 0) {
+                // Encontrar máximo de peatones para normalizar
+                let maxPeople = 0;
+                crowdFlows.forEach(flow => {
+                    let people = flow.peopleCount || 0;
+                    if (people > maxPeople) maxPeople = people;
+                });
+                if (maxPeople === 0) maxPeople = 100; // Default
+                
+                crowdFlows.forEach(flow => {
+                    try {
+                        // El adaptador devuelve location como [lon, lat]
+                        let location = flow.location;
+                        if (!location || !Array.isArray(location) || location.length < 2) {
+                            console.warn("⚠️ Flujo sin coordenadas válidas");
+                            return;
+                        }
+                        
+                        let lon = location[0];
+                        let lat = location[1];
+                        let peopleCount = flow.peopleCount || 0;
+                        
+                        // Normalizar a escala 0-1 basado en máximo de peatones
+                        let intensity = Math.min(peopleCount / maxPeople, 1);
+                        
+                        if (peopleCount > 0 && isInsideCityBounds(lat, lon)) {
+                            heatData.push([lat, lon, intensity]); // [lat, lng, intensity]
+                            console.log(`✅ Punto peatonal: ${flow.id}, lat=${lat.toFixed(4)}, lng=${lon.toFixed(4)}, peatones=${peopleCount}, intensidad=${intensity.toFixed(2)}`);
+                        }
+                    } catch (e) {
+                        console.warn("⚠️ Error procesando flujo:", e);
+                    }
+                });
+            }
+            
+            console.log(`📍 Heatmap peatonal generado: ${heatData.length} puntos`);
+            if (heatData.length > 0) {
+                console.log(`   Primer punto: lat=${heatData[0][0].toFixed(4)}, lng=${heatData[0][1].toFixed(4)}, intensidad=${heatData[0][2].toFixed(2)}`);
+            }
+            return heatData;
+        }
+        
+        // Actualizar la capa de heatmap
+        function updateHeatmap(streetlights, crowdFlows) {
+            if (!window.heatmapEnabled) {
+                console.log("ℹ️ Heatmap deshabilitado, no actualizando");
+                return;
+            }
+            
+            try {
+                console.log("🔄 Iniciando actualización de heatmap...");
+                
+                // Eliminar heatmap anterior
+                if (window.heatmapLayer) {
+                    console.log("🗑️ Removiendo heatmap anterior");
+                    map.removeLayer(window.heatmapLayer);
+                    window.heatmapLayer = null;
+                }
+                
+                // Verificar que L.heatLayer existe
+                if (typeof L.heatLayer === 'undefined') {
+                    console.error("❌ L.heatLayer no está disponible. Verifica que leaflet.heat está cargado");
+                    return;
+                }
+                
+                // Generar nuevos datos
+                const heatData = generateHeatmapData(streetlights || [], crowdFlows || []);
+                
+                if (heatData.length === 0) {
+                    console.warn("⚠️ No hay datos para el heatmap");
+                    return;
+                }
+                
+                // Crear nueva capa de heatmap
+                console.log("🔨 Creando nueva capa de heatmap...");
+                window.heatmapLayer = L.heatLayer(heatData, {
+                    radius: 40,
+                    blur: 25,
+                    max: 1.0,
+                    minOpacity: 0.3,
+                    gradient: {
+                        0.0: '#0000ff',  // Azul (baja intensidad)
+                        0.25: '#00ff00', // Verde
+                        0.5: '#ffff00',  // Amarillo
+                        0.75: '#ff7f00', // Naranja
+                        1.0: '#ff0000'   // Rojo (alta intensidad)
+                    }
+                }).addTo(map);
+                
+                console.log(`✅ Heatmap actualizado con ${heatData.length} puntos`);
+            } catch (error) {
+                console.error("❌ Error actualizando heatmap:", error);
+            }
+        }
+        
+        // Alternar visibilidad del heatmap
+        function toggleHeatmap() {
+            window.heatmapEnabled = !window.heatmapEnabled;
+            
+            console.log(`🔀 Toggle heatmap - showHeatmap: ${window.heatmapEnabled}`);
+            
+            if (window.heatmapEnabled) {
+                console.log("✅ Heatmap ACTIVADO");
+                // Generar datos iniciales
+                if (window.streetlights && window.streetlights.length > 0) {
+                    updateHeatmap(window.streetlights, window.crowdFlows);
+                } else {
+                    console.warn("⚠️ Sin datos de farolas para mostrar heatmap");
+                }
+            } else {
+                console.log("❌ Heatmap DESACTIVADO");
+                if (window.heatmapLayer) {
+                    map.removeLayer(window.heatmapLayer);
+                    window.heatmapLayer = null;
+                }
+            }
+        }
+        
+        // Función para limpiar marcadores anteriores
+        function clearStreetlightMarkers() {
+            streetsLayer.clearLayers();
+            streetlightMarkers = {};
+            console.log("🗑️ Marcadores limpios");
+        }
+        
+        async function loadStreetlights() {
+            try {
+                console.log("📥 Obteniendo farolas desde API FIWARE...");
+                const resp = await fetch(`${API_BASE}/api/streetlights/fiware`);
+                
+                if (!resp.ok) {
+                    throw new Error(`HTTP ${resp.status}`);
+                }
+                
+                let data = await resp.json();
+                let streetlights = data.data || [];  // El adaptador devuelve {data: [...], stats: {...}
+                
+                console.log(`✅ Recibidas ${streetlights.length} farolas desde API`);
+                
+                // Si no hay farolas o error, usar MOCK
+                if (!Array.isArray(streetlights) || streetlights.length === 0) {
+                    console.warn("⚠️ API vacía, usando datos MOCK");
+                    streetlights = MOCK_STREETLIGHTS;
+                }
+                
+                // GUARDAR EN VARIABLE GLOBAL PARA HEATMAP
+                window.streetlights = streetlights;
+                
+                clearStreetlightMarkers();
+                // Contar solo las farolas encendidas dentro de los límites
+                const activeLights = streetlights.filter(sl => {
+                    let lat, lon;
+                    if (sl.lat !== undefined && sl.lng !== undefined) {
+                        lat = sl.lat;
+                        lon = sl.lng;
+                    } else if (sl.location && sl.location.value && sl.location.value.coordinates) {
+                        [lon, lat] = sl.location.value.coordinates;
+                    }
+                    let status = sl.status?.value || sl.status;
+                    return status === 'on' && lat && lon && isInsideCityBounds(lat, lon);
+                });
+                document.getElementById('streetlight-count').textContent = activeLights.length;
+                
+                let markerCount = 0;
+                
+                // Mostrar farolas en el mapa
+                streetlights.forEach((sl, idx) => {
+                    try {
+                        // Parsear coordenadas
+                        let lat, lon;
+                        
+                        if (sl.lat !== undefined && sl.lng !== undefined) {
+                            // Mock format
+                            lat = sl.lat;
+                            lon = sl.lng;
+                        } else if (sl.location && sl.location.value && sl.location.value.coordinates) {
+                            // NGSI-LD format: [lng, lat]
+                            [lon, lat] = sl.location.value.coordinates;
+                        } else {
+                            console.warn(`⚠️ Farola ${idx} sin coordenadas válidas`);
+                            return;
+                        }
+                        
+                        // Validar coordenadas
+                        if (!lat || !lon || isNaN(lat) || isNaN(lon)) {
+                            console.warn(`⚠️ Coordenadas inválidas para ${sl.id}:`, lat, lon);
+                            return;
+                        }
+                        
+                        // Filtrar farolas fuera de los límites de la ciudad (en el mar)
+                        if (!isInsideCityBounds(lat, lon)) {
+                            console.log(`🌊 Farola fuera de límites (en el mar): ${sl.id} [${lat.toFixed(4)}, ${lon.toFixed(4)}]`);
+                            return;
+                        }
+                        
+                        // Extraer datos
+                        const intensity = sl.intensity !== undefined ? sl.intensity : (sl.illuminanceLevel?.value || 0);
+                        const status = sl.status !== undefined ? sl.status : (sl.status?.value || "unknown");
+                        const power = sl.power !== undefined ? sl.power : (sl.powerConsumption?.value || 0);
+                        const lastUpdate = sl.lastUpdate?.value || new Date().toISOString();
+                        const slId = sl.id.includes(':') ? sl.id.split(':').pop() : sl.id;
+                        
+                        if (idx === 0) {
+                            console.log(`📍 Primera farola: ${slId} en [${lat.toFixed(4)}, ${lon.toFixed(4)}]`);
+                        }
+                        
+                        // Crear icono
+                        const customIcon = createStreetlightIcon(status, intensity);
+                        
+                        // Crear popup
+                        const popupContent = `
+                            <div style="font-family: Arial, sans-serif; font-size: 12px; width: 280px;">
+                                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px; border-radius: 4px 4px 0 0; margin: -10px -10px 10px -10px; font-weight: bold;">
+                                    ${slId}
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>Estado:</strong>
+                                    <span style="padding: 2px 6px; border-radius: 3px; background: ${status === 'on' ? '#90EE90' : status === 'off' ? '#D3D3D3' : '#FF6B6B'}; color: ${status === 'on' ? '#006600' : status === 'off' ? '#333' : '#FFF'}; font-weight: bold;">
+                                        ${status === 'on' ? '🟢 ENCENDIDA' : status === 'off' ? '⚫ APAGADA' : '🔴 AVERIADA'}
+                                    </span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                                    <div style="background: #f0f0f0; padding: 8px; border-radius: 3px;">
+                                        <div style="color: #999; font-size: 10px;">Intensidad</div>
+                                        <div style="font-size: 16px; font-weight: bold; color: #667eea;">${intensity}%</div>
+                                    </div>
+                                    <div style="background: #f0f0f0; padding: 8px; border-radius: 3px;">
+                                        <div style="color: #999; font-size: 10px;">Consumo</div>
+                                        <div style="font-size: 16px; font-weight: bold; color: #764ba2;">${power.toFixed(1)}W</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f9f9f9; padding: 8px; border-radius: 3px; margin-bottom: 8px;">
+                                    <div style="color: #999; font-size: 10px;">Ubicación</div>
+                                    <div style="font-size: 11px; color: #333;">${lat.toFixed(6)}°N<br/>${lon.toFixed(6)}°O</div>
+                                </div>
+                                <div style="background: #f0f8ff; padding: 6px; border-radius: 3px; border-left: 3px solid #667eea; font-size: 10px; color: #333;">
+                                    <strong>Última actualización:</strong><br/>${lastUpdate}
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Crear marker
+                        const marker = L.marker([lat, lon], { icon: customIcon })
+                            .bindPopup(popupContent, { maxWidth: 300, maxHeight: 400 })
+                            .addTo(streetsLayer);
+                        
+                        streetlightMarkers[sl.id] = marker;
+                        markerCount++;
+                        
+                    } catch (e) {
+                        console.error(`❌ Error procesando farola ${idx}:`, e);
+                    }
+                });
+                
+                console.log(`✅ ${markerCount} marcadores añadidos al mapa`);
+                
+                // Análisis de farolas (solo las dentro de los límites)
+                const filteredStreetlights = streetlights.filter(sl => {
+                    let lat, lon;
+                    if (sl.lat !== undefined && sl.lng !== undefined) {
+                        lat = sl.lat;
+                        lon = sl.lng;
+                    } else if (sl.location && sl.location.value && sl.location.value.coordinates) {
+                        [lon, lat] = sl.location.value.coordinates;
+                    }
+                    return lat && lon && isInsideCityBounds(lat, lon);
+                });
+                
+                // Contar por estado
+                const onCount = filteredStreetlights.filter(sl => {
+                    let status = sl.status !== undefined ? sl.status : (sl.status?.value || "unknown");
+                    return status === 'on';
+                }).length;
+                const offCount = filteredStreetlights.filter(sl => {
+                    let status = sl.status !== undefined ? sl.status : (sl.status?.value || "unknown");
+                    return status === 'off';
+                }).length;
+                const faultCount = filteredStreetlights.filter(sl => {
+                    let status = sl.status !== undefined ? sl.status : (sl.status?.value || "unknown");
+                    return status === 'fault';
+                }).length;
+                
+                const onCount = filteredStreetlights.filter(sl => (sl.status?.value || sl.status) === 'on').length;
+                const offCount = filteredStreetlights.filter(sl => (sl.status?.value || sl.status) === 'off').length;
+                const faultCount = filteredStreetlights.filter(sl => (sl.status?.value || sl.status) === 'fault').length;
+                
+                console.log(`📊 Estados (filtrado): ON=${onCount}, OFF=${offCount}, FAULT=${faultCount}, Total=${filteredStreetlights.length} (de ${streetlights.length} totales)`);
+                
+            } catch (error) {
+                console.error("❌ Error cargando farolas, usando MOCK:", error);
+                // Fallback a MOCK si error
+                clearStreetlightMarkers();
+                // Contar solo las farolas encendidas en MOCK
+                const mockActiveLights = MOCK_STREETLIGHTS.filter(sl => sl.status === 'on' && isInsideCityBounds(sl.lat, sl.lng));
+                document.getElementById('streetlight-count').textContent = mockActiveLights.length;
+                
+                MOCK_STREETLIGHTS.forEach(sl => {
+                    // Filtrar farolas fuera de los límites de la ciudad (en el mar)
+                    if (!isInsideCityBounds(sl.lat, sl.lng)) {
+                        console.log(`🌊 MOCK: Farola fuera de límites (en el mar): ${sl.id}`);
+                        return;
+                    }
+                    
+                    const customIcon = createStreetlightIcon(sl.status, sl.intensity);
+                    const marker = L.marker([sl.lat, sl.lng], { icon: customIcon })
+                        .bindPopup(`<strong>${sl.id}</strong><br/>Estado: ${sl.status}<br/>Intensidad: ${sl.intensity}%<br/>Consumo: ${sl.power}W`)
+                        .addTo(streetsLayer);
+                    streetlightMarkers[sl.id] = marker;
+                });
+                
+                const mockOn = MOCK_STREETLIGHTS.filter(sl => sl.status === 'on' && isInsideCityBounds(sl.lat, sl.lng)).length;
+                const mockOff = MOCK_STREETLIGHTS.filter(sl => sl.status === 'off' && isInsideCityBounds(sl.lat, sl.lng)).length;
+                const mockFault = MOCK_STREETLIGHTS.filter(sl => sl.status === 'fault' && isInsideCityBounds(sl.lat, sl.lng)).length;
+                const totalInside = mockOn + mockOff + mockFault;
+                console.log(`📊 MOCK - ON=${mockOn}, OFF=${mockOff}, FAULT=${mockFault}, Total=${totalInside} (filtrado de ${MOCK_STREETLIGHTS.length} totales)`);
+                console.log("✅ MOCK data renderizado");
+            }
+        }
+        
+        async function loadCrowdFlows() {
+            try {
+                console.log("📥 Obteniendo flujos peatonales...");
+                const resp = await fetch(`${API_BASE}/api/crowd-flows/fiware`);
+                const flows = await resp.json();
+                
+                // GUARDAR EN VARIABLE GLOBAL PARA HEATMAP
+                window.crowdFlows = flows;
+                
+                // El adaptador devuelve peopleCount directamente (no .value)
+                const totalPeople = flows.reduce((sum, f) => sum + (f.peopleCount || 0), 0);
+                document.getElementById('people-count').textContent = totalPeople;
+                console.log(`✅ Flujo peatonal: ${totalPeople} personas en ${flows.length} zonas`);
+                flows.forEach(f => {
+                    console.log(`   - ${f.id.split(':').pop()}: ${f.peopleCount} peatones`);
+                });
+            } catch (error) {
+                console.error("❌ Error cargando flujos:", error);
+                document.getElementById('people-count').textContent = "0";
+                window.crowdFlows = [];
+            }
+        }
+        
+        async function loadCabinet() {
+            try {
+                console.log("📥 Calculando consumo energético desde farolas...");
+                
+                // Obtener farolas con adaptador
+                const resp = await fetch(`${API_BASE}/api/streetlights/fiware`);
+                let data = await resp.json();
+                let streetlights = data.data || [];
+                let stats = data.stats || {};
+                
+                if (!Array.isArray(streetlights) || streetlights.length === 0) {
+                    console.warn("⚠️ Sin farolas, usando MOCK para consumo");
+                    // Usar MOCK para consumo
+                    const mockEnergy = calculateTotalEnergyConsumption(MOCK_STREETLIGHTS);
+                    document.getElementById('energy-consumed').textContent = mockEnergy.toFixed(2);
+                    return;
+                }
+                
+                // Calcular consumo desde farolas reales (SOLO las encendidas)
+                const totalEnergy = calculateTotalEnergyConsumption(streetlights);
+                document.getElementById('energy-consumed').textContent = totalEnergy.toFixed(2);
+                
+                // Log detallado
+                const totalPower = streetlights.reduce((sum, sl) => {
+                    let status = sl.status || "unknown";
+                    let intensity = sl.intensity || 0;
+                    if (status === 'on') {
+                        return sum + (120 * (intensity / 100));
+                    }
+                    return sum;
+                }, 0);
+                
+                const onCount = streetlights.filter(sl => sl.status === 'on').length;
+                const offCount = streetlights.filter(sl => sl.status === 'off').length;
+                const faultCount = streetlights.filter(sl => sl.status === 'fault').length;
+                
+                console.log(`📊 Farolas - ON: ${onCount}, OFF: ${offCount}, FAULT: ${faultCount}`);
+                console.log(`⚡ Potencia total: ${totalPower.toFixed(1)}W`);
+                
+            } catch (error) {
+                console.error("❌ Error calculando consumo:", error);
+                document.getElementById('energy-consumed').textContent = "0.00";
+            }
+        }
+        
+        async function loadRecommendation() {
+            try {
+                const crowdResp = await fetch(`${API_BASE}/ngsi-ld/v1/entities?type=CrowdFlowObserved`);
+                const crowds = await crowdResp.json();
+                const totalPeople = crowds.reduce((sum, c) => sum + (c.peopleCount?.value || 0), 0);
+                const recommendedIntensity = totalPeople > 30 ? 100 : totalPeople > 10 ? 60 : 20;
+                const reason = totalPeople > 30 ? 'Alta demanda peatonal' : totalPeople > 10 ? 'Demanda moderada' : 'Modo ahorro';
+                
+                document.getElementById('recommendation').innerHTML = `
+                    <div class="metric">
+                        <span class="metric-label">Intensidad Recomendada</span>
+                        <span class="metric-value">${recommendedIntensity}%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Razón</span>
+                        <span>${reason}</span>
+                    </div>
+                `;
+            } catch (error) {
+                console.error("❌ Error cargando recomendación:", error);
+            }
+        }
+        
+        async function loadAnomalies() {
+            try {
+                const slResp = await fetch(`${API_BASE}/ngsi-ld/v1/entities?type=Streetlight`);
+                const streetlights = await slResp.json();
+                const crowdResp = await fetch(`${API_BASE}/ngsi-ld/v1/entities?type=CrowdFlowObserved`);
+                const crowds = await crowdResp.json();
+                const totalPeople = crowds.reduce((sum, c) => sum + (c.peopleCount?.value || 0), 0);
+                const anomalies = streetlights.filter(sl => (sl.illuminanceLevel?.value || 0) > 80 && totalPeople < 5).map(sl => ({
+                  type: 'high_intensity_low_demand',
+                  streetlight_id: sl.id,
+                  intensity: sl.illuminanceLevel?.value,
+                  people: totalPeople
+                }));
+                
+                document.getElementById('anomaly-count').textContent = anomalies.length;
+                
+                if (anomalies.length === 0) {
+                    document.getElementById('anomalies').innerHTML = '<p style="color: green;">✓ Sin anomalías detectadas</p>';
+                } else {
+                    let html = '<ul style="list-style: none; padding: 0;">';
+                    anomalies.forEach(anom => {
+                        html += `<li class="metric">
+                            <span>${anom.streetlight_id.split(':').pop()} - Intensidad: ${anom.intensity}% sin demanda</span>
+                        </li>`;
+                    });
+                    html += '</ul>';
+                    document.getElementById('anomalies').innerHTML = html;
+                }
+            } catch (error) {
+                console.error("❌ Error cargando anomalías:", error);
+            }
+        }
+        
+        async function loadHistoricalEnergy() {
+            try {
+                const cabinetId = 'urn:ngsi-ld:StreetlightControlCabinet:ACOR-CAB-001';
+                const resp = await fetch(`${API_BASE}/v2/entities/${encodeURIComponent(cabinetId)}/attrs/energyConsumed`);
+                const data = await resp.json();
+                const historical = data.historical?.values || [];
+                
+                if (historical.length === 0) {
+                    console.log("⚠️ Sin datos históricos de energía");
+                    return;
+                }
+                
+                const ctx = document.getElementById('energyChart').getContext('2d');
+                if (energyChart) energyChart.destroy();
+                energyChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: historical.map((_, i) => `${i}h`),
+                        datasets: [{
+                            label: 'Consumo (kWh)',
+                            data: historical.map(v => v[1] || 0),
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: true } }
+                    }
+                });
+            } catch (error) {
+                console.error("❌ Error cargando histórico energía:", error);
+            }
+        }
+        
+        async function loadHistoricalCrowd() {
+            try {
+                const crowdId = 'urn:ngsi-ld:CrowdFlowObserved:ACOR-MP-CROWD-001';
+                const resp = await fetch(`${API_BASE}/v2/entities/${encodeURIComponent(crowdId)}/attrs/peopleCount`);
+                const data = await resp.json();
+                const historical = data.historical?.values || [];
+                
+                if (historical.length === 0) {
+                    console.log("⚠️ Sin datos históricos de peatones");
+                    return;
+                }
+                
+                const ctx = document.getElementById('crowdChart').getContext('2d');
+                if (crowdChart) crowdChart.destroy();
+                crowdChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: historical.map((_, i) => `${i}h`),
+                        datasets: [{
+                            label: 'Peatones',
+                            data: historical.map(v => v[1] || 0),
+                            backgroundColor: '#764ba2'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: true } }
+                    }
+                });
+            } catch (error) {
+                console.error("❌ Error cargando histórico peatones:", error);
+            }
+        }
+        
+        async function applyRecommendation() {
+            alert("Recomendación aplicada a StreetlightGroup (simulado en MVP)");
+        }
+        
+        async function refreshAnomalies() {
+            await loadAnomalies();
+            alert("Anomalías actualizadas");
+        }
+        
+        // Recargar cada 10 segundos
+        console.log("⏱️ Dashboard iniciado, recargando cada 10 segundos");
+        loadDashboard();
+        setInterval(loadDashboard, 10000);
+        
+        // Log final
+        console.log("🎉 Script completamente inicializado");
+        console.log("📊 Abre DevTools (F12) para ver logs en tiempo real");
+            } catch (error) {
+                console.error("❌ Error fatal en dashboard:", error);
+                console.error(error.stack);
+            }
+        }
+    </script>
+</body>
+</html>
