@@ -75,10 +75,47 @@ services:
       - orion
     environment:
       ORION_BASE_URL: http://orion:1026
+      QUANTUMLEAP_BASE_URL: http://quantumleap:8668
     ports:
       - "8080:8080"
     networks:
       - eco-dimming-net
+
+  crate:
+    image: crate:4.6.7
+    container_name: eco-dimming-crate
+    command: ["crate", "-Ccluster.name=eco-dimming", "-Cnetwork.host=0.0.0.0", "-Chttp.cors.enabled=true", "-Chttp.cors.allow-origin=*"]
+    ports:
+      - "4200:4200"
+      - "5432:5432"
+    volumes:
+      - crate-data:/data
+    networks:
+      - eco-dimming-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4200/"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  quantumleap:
+    image: orchestracities/quantumleap:1.0.0
+    container_name: eco-dimming-quantumleap
+    depends_on:
+      - crate
+    environment:
+      CRATE_HOST: crate
+      CRATE_PORT: 4200
+      LOGLEVEL: INFO
+    ports:
+      - "8668:8668"
+    networks:
+      - eco-dimming-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8668/version"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   frontend:
     image: nginx:1.27-alpine
@@ -96,7 +133,11 @@ services:
 
 volumes:
   mongo-data:
+  crate-data:
 
 networks:
   eco-dimming-net:
     driver: bridge
+
+
+# hola

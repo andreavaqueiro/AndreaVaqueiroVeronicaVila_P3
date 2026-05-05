@@ -13,6 +13,7 @@ from __future__ import annotations
 import os
 from datetime import datetime, timedelta, timezone
 from typing import Any
+from urllib.parse import quote
 
 import requests
 from fastapi import FastAPI, HTTPException
@@ -31,6 +32,11 @@ from orion_client import (
 QUANTUMLEAP_BASE_URL = os.getenv(
     "QUANTUMLEAP_BASE_URL", "http://localhost:8668"
 ).rstrip("/")
+
+# Con entidades NGSI-LD compactadas con @context, las notificaciones NGSIv2 (vía /v2)
+# suelen usar el IRI completo como nombre de atributo.
+QL_ENERGY_ATTR = "https://smartdatamodels.org/dataModel.Streetlighting/energyConsumed"
+QL_PEOPLE_ATTR = "https://smartdatamodels.org/dataModel.CrowdFlowObserved/peopleCount"
 
 app = FastAPI(
     title="Eco-Dimming MVP API",
@@ -155,10 +161,12 @@ async def get_historical_energy(hours: int = 6) -> dict[str, Any]:
     """Obtiene histórico de consumo energético desde QuantumLeap."""
     try:
         cabinet_id = "urn:ngsi-ld:StreetlightControlCabinet:ACOR-CAB-001"
+        cabinet_id_enc = quote(cabinet_id, safe="")
         now = datetime.now(timezone.utc)
         before = (now - timedelta(hours=hours)).isoformat()
-        url = f"{QUANTUMLEAP_BASE_URL}/v2/entities/{cabinet_id}/attrs/energyConsumed?fromDate={before}"
-        response = requests.get(url, timeout=10)
+        energy_attr_enc = quote(QL_ENERGY_ATTR, safe="")
+        url = f"{QUANTUMLEAP_BASE_URL}/v2/entities/{cabinet_id_enc}/attrs/{energy_attr_enc}"
+        response = requests.get(url, params={"fromDate": before}, timeout=10)
         response.raise_for_status()
         data = response.json()
         return {"historical": data}
@@ -171,10 +179,12 @@ async def get_historical_crowd(hours: int = 6) -> dict[str, Any]:
     """Obtiene histórico de flujos peatonales desde QuantumLeap."""
     try:
         crowd_id = "urn:ngsi-ld:CrowdFlowObserved:ACOR-MP-CROWD-001"
+        crowd_id_enc = quote(crowd_id, safe="")
         now = datetime.now(timezone.utc)
         before = (now - timedelta(hours=hours)).isoformat()
-        url = f"{QUANTUMLEAP_BASE_URL}/v2/entities/{crowd_id}/attrs/peopleCount?fromDate={before}"
-        response = requests.get(url, timeout=10)
+        people_attr_enc = quote(QL_PEOPLE_ATTR, safe="")
+        url = f"{QUANTUMLEAP_BASE_URL}/v2/entities/{crowd_id_enc}/attrs/{people_attr_enc}"
+        response = requests.get(url, params={"fromDate": before}, timeout=10)
         response.raise_for_status()
         data = response.json()
         return {"historical": data}
@@ -198,20 +208,17 @@ def calculate_recommended_intensity(
 async def get_recommendation() -> dict[str, Any]:
     """Obtiene recomendación de intensidad basada en contexto actual."""
     try:
-        crowd_response = requests.get(
-            f"{ORION_BASE_URL}/ngsi-ld/v1/entities?type=CrowdFlowObserved",
-            headers=HEADERS_LD,
-            timeout=10,
-        )
-        crowd_response.raise_for_status()
-        crowds = crowd_response.json()
-
+        entities = list_entities("CrowdFlowObserved")
+        crowds = crowd_flows_to_frontend(entities)
         total_people = 0
         for crowd in crowds:
-            if "peopleCount" in crowd:
-                total_people += crowd["peopleCount"].get("value", 0)
+            try:
+                total_people += int(crowd.get("peopleCount") or 0)
+            except (TypeError, ValueError):
+                continue
 
-        recommended_intensity = calculate_recommended_intensity(total_people, 0.3)
+        # No hay fuente de tráfico en Orion en este MVP; evitamos inventar valores.
+        recommended_intensity = calculate_recommended_intensity(total_people, 0.0)
 
         return {
             "recommendation": {
@@ -234,32 +241,30 @@ async def get_recommendation() -> dict[str, Any]:
 async def get_anomalies() -> dict[str, Any]:
     """Detecta anomalías simples en el estado del sistema."""
     try:
-        streetlights_resp = requests.get(
-            f"{ORION_BASE_URL}/ngsi-ld/v1/entities?type=Streetlight",
-            headers=HEADERS_LD,
-            timeout=10,
-        )
-        streetlights_resp.raise_for_status()
-        streetlights = streetlights_resp.json()
+        streetlight_entities = list_entities("Streetlight")
+        streetlights = streetlights_to_frontend(streetlight_entities)
 
-        crowd_resp = requests.get(
-            f"{ORION_BASE_URL}/ngsi-ld/v1/entities?type=CrowdFlowObserved",
-            headers=HEADERS_LD,
-            timeout=10,
-        )
-        crowd_resp.raise_for_status()
-        crowds = crowd_resp.json()
-
-        total_people = sum(c.get("peopleCount", {}).get("value", 0) for c in crowds)
+        crowd_entities = list_entities("CrowdFlowObserved")
+        crowds = crowd_flows_to_frontend(crowd_entities)
+        total_people = 0
+        for crowd in crowds:
+            try:
+                total_people += int(crowd.get("peopleCount") or 0)
+            except (TypeError, ValueError):
+                continue
 
         anomalies = []
         for sl in streetlights:
-            intensity = sl.get("illuminanceLevel", {}).get("value", 0)
+            try:
+                intensity = float(sl.get("illuminanceLevel") or sl.get("intensity") or 0)
+            except (TypeError, ValueError):
+                intensity = 0
+
             if intensity > 80 and total_people < 5:
                 anomalies.append(
                     {
                         "type": "high_intensity_low_demand",
-                        "streetlight_id": sl["id"],
+                        "streetlight_id": sl.get("id"),
                         "intensity": intensity,
                         "people": total_people,
                     }

@@ -35,6 +35,15 @@ import requests
 
 
 ORION_BASE_URL = os.getenv("ORION_BASE_URL", "http://localhost:1026").rstrip("/")
+QUANTUMLEAP_NOTIFY_URL = os.getenv(
+    "QUANTUMLEAP_NOTIFY_URL", "http://quantumleap:8668/v2/notify"
+).rstrip("/")
+ENABLE_QUANTUMLEAP_SUBSCRIPTIONS = os.getenv(
+    "ENABLE_QUANTUMLEAP_SUBSCRIPTIONS", "1"
+).strip() not in ("0", "false", "False")
+ENABLE_V2_UPDATES_FOR_HISTORICAL = os.getenv(
+    "ENABLE_V2_UPDATES_FOR_HISTORICAL", "1"
+).strip() not in ("0", "false", "False")
 DEFAULT_ITERATIONS = int(os.getenv("SIM_ITERATIONS", "0"))
 DEFAULT_SLEEP_SECONDS = float(os.getenv("SIM_SLEEP_SECONDS", "2"))
 DEFAULT_SEED = int(os.getenv("SIM_SEED", "42"))
@@ -90,6 +99,177 @@ def encode_entity_id(entity_id: str) -> str:
 
 def orion_url(path: str) -> str:
     return f"{ORION_BASE_URL}{path}"
+
+
+def _orion_v2_url(path: str) -> str:
+    return orion_url(f"/v2{path}")
+
+
+def patch_attrs_v2(entity_id: str, attrs: dict[str, Any], timeout_s: float = 10.0) -> None:
+    """Actualiza atributos vía NGSIv2 (compatibilidad) para disparar suscripciones a QuantumLeap.
+
+    Nota: seguimos creando/actualizando el estado principal en NGSI-LD. Este PATCH v2
+    se usa solo para los atributos historizados (p.ej. energyConsumed/peopleCount) porque
+    QuantumLeap ingiere notificaciones NGSIv2 en /v2/notify.
+    """
+
+    if not ENABLE_V2_UPDATES_FOR_HISTORICAL:
+        return
+
+    url = _orion_v2_url(f"/entities/{encode_entity_id(entity_id)}/attrs")
+    try:
+        resp = requests.patch(url, json=attrs, timeout=timeout_s)
+        if resp.status_code in (204, 200):
+            return
+        # No rompemos la simulación si falla el historizado; solo avisamos.
+        print(
+            f"[WARN] PATCH v2 {entity_id} -> {resp.status_code} {resp.text}",
+            file=sys.stderr,
+        )
+    except requests.RequestException as exc:
+        print(f"[WARN] PATCH v2 {entity_id} failed: {exc}", file=sys.stderr)
+
+
+def send_quantumleap_notify(data: list[dict[str, Any]], subscription_id: str = "simulator") -> None:
+    """Envía una notificación NGSIv2 a QuantumLeap para historizar atributos.
+
+    Data debe ser una lista de entidades en formato NGSIv2 (id, type, attrs...)
+    Ejemplo:
+      [{"id":"urn:ngsi-ld:StreetlightControlCabinet:ACOR-CAB-001","type":"StreetlightControlCabinet","energyConsumed":{"type":"Number","value":123.4}}]
+    """
+    if not QUANTUMLEAP_NOTIFY_URL:
+        return
+    payload = {"subscriptionId": subscription_id, "data": data}
+    try:
+        r = requests.post(QUANTUMLEAP_NOTIFY_URL, json=payload, timeout=5)
+        if r.status_code not in (200, 201, 204):
+            print(f"[WARN] QL notify -> {r.status_code} {r.text}", file=sys.stderr)
+    except requests.RequestException as exc:
+        # Fallback: si estamos ejecutando fuera del stack Docker, intentamos localhost.
+        try:
+            fallback = "http://localhost:8668/v2/notify"
+            r2 = requests.post(fallback, json=payload, timeout=5)
+            if r2.status_code not in (200, 201, 204):
+                print(f"[WARN] QL notify fallback -> {r2.status_code} {r2.text}", file=sys.stderr)
+            return
+        except requests.RequestException:
+            print(f"[WARN] QL notify failed: {exc}", file=sys.stderr)
+
+
+def ensure_quantumleap_subscriptions(ids: TopologyIds, timeout_s: float = 10.0) -> None:
+    """Crea suscripciones (NGSIv2) para que Orion notifique a QuantumLeap.
+
+    QuantumLeap ingiere notificaciones NGSIv2 en /v2/notify. Orion-LD expone
+    compatibilidad NGSIv2 en /v2/* (si está habilitada por la imagen).
+
+    Operación idempotente: si ya existe una suscripción con la misma
+    descripción, no se recrea.
+    """
+
+    if not ENABLE_QUANTUMLEAP_SUBSCRIPTIONS:
+        return
+
+    try:
+        resp = requests.get(_orion_v2_url("/subscriptions"), timeout=timeout_s)
+        resp.raise_for_status()
+        existing = resp.json()
+        if not isinstance(existing, list):
+            existing = []
+    except requests.RequestException as exc:
+        print(
+            f"[WARN] No se pudieron listar /v2/subscriptions (¿Orion-LD sin compat NGSIv2?): {exc}",
+            file=sys.stderr,
+        )
+        return
+
+    # Con entidades NGSI-LD + @context, Orion-LD expone en /v2 atributos con el IRI completo.
+    energy_attr = COMMON_CONTEXT["energyConsumed"]
+    people_attr = COMMON_CONTEXT["peopleCount"]
+
+    existing_by_description: dict[str, dict[str, Any]] = {}
+    for sub in existing:
+        if not isinstance(sub, dict):
+            continue
+        desc = sub.get("description")
+        if isinstance(desc, str):
+            existing_by_description[desc] = sub
+
+    subs_to_create: list[dict[str, Any]] = [
+        {
+            "description": "EcoDimming QuantumLeap energyConsumed",
+            "subject": {
+                "entities": [
+                    {
+                        "id": ids.cabinet_id,
+                        "type": "StreetlightControlCabinet",
+                    }
+                ],
+                "condition": {"attrs": [energy_attr]},
+            },
+            "notification": {
+                "http": {"url": QUANTUMLEAP_NOTIFY_URL},
+                "attrs": [energy_attr],
+                "metadata": ["dateCreated", "dateModified"],
+            },
+            "throttling": 1,
+        },
+        {
+            "description": "EcoDimming QuantumLeap peopleCount",
+            "subject": {
+                "entities": [
+                    {
+                        "id": ids.crowd_ids[0] if ids.crowd_ids else "urn:ngsi-ld:CrowdFlowObserved:ACOR-MP-CROWD-001",
+                        "type": "CrowdFlowObserved",
+                    }
+                ],
+                "condition": {"attrs": [people_attr]},
+            },
+            "notification": {
+                "http": {"url": QUANTUMLEAP_NOTIFY_URL},
+                "attrs": [people_attr],
+                "metadata": ["dateCreated", "dateModified"],
+            },
+            "throttling": 1,
+        },
+    ]
+
+    for sub in subs_to_create:
+        desc = sub["description"]
+        existing_sub = existing_by_description.get(desc)
+        if existing_sub is not None:
+            try:
+                existing_attrs = (
+                    existing_sub.get("subject", {})
+                    .get("condition", {})
+                    .get("attrs")
+                )
+                desired_attrs = sub.get("subject", {}).get("condition", {}).get("attrs")
+                if existing_attrs == desired_attrs:
+                    continue
+
+                sub_id = existing_sub.get("id")
+                if isinstance(sub_id, str):
+                    dr = requests.delete(_orion_v2_url(f"/subscriptions/{sub_id}"), timeout=timeout_s)
+                    if dr.status_code not in (204, 404):
+                        print(
+                            f"[WARN] No se pudo borrar suscripción antigua {desc}: {dr.status_code} {dr.text}",
+                            file=sys.stderr,
+                        )
+            except requests.RequestException as exc:
+                print(f"[WARN] Error borrando suscripción antigua {desc}: {exc}", file=sys.stderr)
+
+        try:
+            r = requests.post(
+                _orion_v2_url("/subscriptions"),
+                json=sub,
+                timeout=timeout_s,
+            )
+            if r.status_code in (201, 204):
+                print(f"[SUB] Creada: {sub['description']}")
+                continue
+            print(f"[WARN] No se pudo crear suscripción: {r.status_code} {r.text}", file=sys.stderr)
+        except requests.RequestException as exc:
+            print(f"[WARN] Error creando suscripción: {exc}", file=sys.stderr)
 
 
 def post_entity(entity: dict[str, Any], timeout_s: float = 15.0) -> None:
@@ -354,6 +534,8 @@ def init_topology(streetlight_count: int, seed: int, reset: bool) -> TopologyIds
     for entity in entities:
         post_entity(entity)
 
+    ensure_quantumleap_subscriptions(ids)
+
     return ids
 
 
@@ -421,6 +603,21 @@ def run_simulation(
                 },
             )
 
+        # Disparar historizado (solo entidad principal del dashboard) vía NGSIv2.
+        if ids.crowd_ids:
+            # En lugar de intentar PATCH NGSIv2 con nombres IRI (inválidos), enviamos
+            # directamente la notificación a QuantumLeap en formato NGSIv2.
+            send_quantumleap_notify(
+                [
+                    {
+                        "id": ids.crowd_ids[0],
+                        "type": "CrowdFlowObserved",
+                        "peopleCount": {"type": "Number", "value": int(people_per_sensor[0])},
+                    }
+                ],
+                subscription_id="simulator-people",
+            )
+
         # --- Streetlights ---
         for sid in ids.streetlight_ids:
             r = rng.random()
@@ -453,6 +650,18 @@ def run_simulation(
                 "energyConsumed": {"type": "Property", "value": round(energy_kwh, 3), "unitCode": "KWH"},
                 "lastUpdate": {"type": "Property", "value": utc_now_iso()},
             },
+        )
+
+        # Disparar historizado de consumo en QuantumLeap vía NGSIv2.
+        send_quantumleap_notify(
+            [
+                {
+                    "id": ids.cabinet_id,
+                    "type": "StreetlightControlCabinet",
+                    "energyConsumed": {"type": "Number", "value": float(round(energy_kwh, 3))},
+                }
+            ],
+            subscription_id="simulator-energy",
         )
 
         print(
